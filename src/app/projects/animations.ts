@@ -1,4 +1,4 @@
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
 export const markedTrigger = trigger('markedState', [
   state('default', style({
@@ -33,19 +33,84 @@ export const markedTrigger = trigger('markedState', [
 
 export const itemStatetrigger = trigger('itemState', [
   transition(':enter', [
-    style({
-      opacity: 0,
-      transform: 'translateX(-100%)'
-    }),
-    animate('500ms ease-out', style({
-      opacity: 1,
-      transform: 'translateX(0)'
-    }))
+    animate('1000ms ease-out', keyframes([
+      style({
+        opacity: 0,
+        transform: 'translateX(-100%)',
+        offset: 0
+      }),
+      style({
+        opacity: 1,
+        transform: 'translateX(20%)',
+        offset: 0.4
+      }),
+      style({
+        opacity: 1,
+        transform: 'translateX(0)',
+        offset: 1
+      })
+    ]))
   ]),
   transition(':leave', [
-    animate('1500ms ease-in', style({
-      opacity: 0,
-      transform: 'translateX(100%)'
-    }))
+    animate('1000ms ease-in', keyframes([
+      style({
+        opacity: 1,
+        transform: 'translateX(0)',
+        offset: 0
+      }),
+      style({
+        opacity: 1,
+        transform: 'translateX(-20%)',
+        offset: 0.3
+      }),
+      style({
+        opacity: 0,
+        transform: 'translateX(100%)',
+        offset: 1
+      })
+    ]))
+  ]),
+  transition('slidUp => slidDown', [
+    animate('1000ms ease-out', keyframes([
+      style({
+        transform: 'translateY(-100%)'
+      }),
+      style({
+        transform: 'translateY(0)'
+      })
+    ]))
+  ]),
+  transition('slidDown => slidUp', [
+    animate('1000ms ease-in', keyframes([
+      style({
+        transform: 'translateY(0)'
+      }),
+      style({
+        transform: 'translateY(-100%)'
+      })
+    ]))
   ])
+]);
+
+export const slideStateTrigger = trigger('slideState', [
+  transition(':enter', [
+    animate('2000ms ease-out', keyframes([
+      style({
+        transform: 'translateY(-100%)'
+      }),
+      style({
+        transform: 'translateY(0)'
+      })
+    ]))
+  ]),
+  transition(':leave', [
+    animate('2000ms ease-in', keyframes([
+      style({
+        transform: 'translateY(0)'
+      }),
+      style({
+        transform: 'translateY(-100%)'
+      })
+    ]))
+  ]),
 ]);
