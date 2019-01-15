@@ -36,4 +36,5 @@ export const buttonStateTrigger = trigger('buttonState', [
         transform: 'scale(1)'
       }))
   ])
+])
 ]);
