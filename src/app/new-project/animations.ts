@@ -1,4 +1,4 @@
-import { trigger, state, style, transition, group, animate } from '@angular/animations';
+import { trigger, state, style, transition, group, animate, query } from '@angular/animations';
 import { setClassMetadata } from '@angular/core/src/render3';
 import { preserveWhitespacesDefault } from '@angular/compiler';
 
@@ -37,4 +37,15 @@ export const buttonStateTrigger = trigger('buttonState', [
       }))
   ])
 ])
+]);
+
+export const formStateTrigger = trigger('formState', [
+  transition('* => *', [
+    query('input.ng-invalid:focus', [
+      animate(200, style({
+        backgroundColor: 'red'
+      })),
+      animate(200)
+    ], {optional: true})
+  ])
 ]);

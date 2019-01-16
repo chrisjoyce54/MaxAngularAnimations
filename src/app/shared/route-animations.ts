@@ -1,11 +1,14 @@
-import { trigger, transition, style, animate } from '@angular/animations';
+import { trigger, transition, style, animate, animation, useAnimation } from '@angular/animations';
+const fadeAnimation = animation([
+  style({
+    opacity: '{{ startOpacity }}'
+  }),
+  animate('{{ startDuration }}')
+], {params: {startOpacity: 0, startDuration: '100ms'}});
 
-export const routeFadeStateTrigger = trigger('routeFadeState', [
+export const routeFadeStateTrigger = (fadeParams) => trigger('routeFadeState', [
   transition(':enter', [
-    style({
-      opacity: 0
-    }),
-    animate(300)
+    useAnimation(fadeAnimation, {params: fadeParams})
   ]),
   transition(':leave', animate(300, style({
     opacity: 0

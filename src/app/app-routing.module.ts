@@ -5,8 +5,8 @@ import { ProjectsComponent } from './projects/projects.component';
 import { UsersComponent } from './users/users.component';
 
 const appRoutes: Routes = [
-  { path: '', component: ProjectsComponent },
-  { path: 'users', component: UsersComponent }
+  { path: '', component: ProjectsComponent, data: {myAnimation: {myPage: 'rootPage'}} },
+  { path: 'users', component: UsersComponent, data: {myAnimation: {myPage: 'usersPage'}} }
 ];
 
 @NgModule({

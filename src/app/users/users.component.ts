@@ -6,7 +6,7 @@ import { routeFadeStateTrigger, routeSlideStatetrigger } from '../shared/route-a
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
   animations: [
-    routeFadeStateTrigger,
+    routeFadeStateTrigger( {startOpacity: 0, startDuration: '2000ms'}),
     routeSlideStatetrigger
   ]
 })
